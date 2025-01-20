@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {COURSES} from '../db-data';
+import { Course } from './model/course';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,8 @@ import {COURSES} from '../db-data';
     standalone: false
 })
 export class AppComponent {
-    public course1 = COURSES[0];
-    public course2 = COURSES[1];
-    public course3 = COURSES[2];
+    public courses: Course[] = COURSES;
+    handleClick(course: Course) {
+        console.log("Hello clicked here", course)
+    }
 }

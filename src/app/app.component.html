@@ -8,10 +8,31 @@
 
 <div class="courses">
 
-    <course-card [course]="course1"></course-card>
-    <course-card [course]="course2"></course-card>
-    <course-card [course]="course3"></course-card>
+    <!-- A new way of implementing a foor loop -->
+    @for (item of courses; 
+        track item.id; 
+        let index = $index;
+        let counter = $count;
+        let last = $last;
+        let first = $first;
+        let is_even = $even;
+        let is_odd = $odd;
+    ) {
+        {{counter}}
+        <course-card 
+            [course]="item" 
+            [index]="index" 
+            [class.is-first]="first"
+            [class.is-last]="last"
+            [class.is-even]="is_even"
+            [class.is-odd]="is_odd"
+            (clickCourse)="handleClick($event)"
+        ></course-card>
+    }
 
+    @empty {
+        <h1>No courses listed</h1>
+    }
 
 </div>
 
