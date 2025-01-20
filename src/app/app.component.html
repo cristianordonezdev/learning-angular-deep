@@ -2,25 +2,41 @@
 
     <img class="logo"
          src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
-
 </div>
 
 
 <div class="courses">
+    <p>    {{date | date: "dd-MMM-yy"}}    </p>
+    <p>    {{date | date: "dd-MM-yyyy"}}    </p>
+    <p>    {{date | date: "dd MMM yy"}}    </p>
 
-    <div class="course-card">
+    <p>{{title | lowercase}}</p>
+    <p>{{title | uppercase}}</p>
 
-        <div class="course-title">
-            Angular Core Deep Dive
-        </div>
-        <img width="300" alt="Angular Logo"
-             src="https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png">
+    <p>{{price | number: "3.1-2"}}</p>
+    <p>{{price | currency: "MXM"}}</p>
+    <p>{{price | currency }}</p>
 
-        <div class="course-description">
-            A detailed walk-through of the most important part of Angular - the Core and Common modules.
-        </div>
+    {{courses | json}}
+    <!-- A new way of implementing a foor loop -->
+    @for (item of courses | slice:0:5; 
+        track item.id; 
+    ) {
+        {{counter}}
+        <course-card 
+            [course]="item" 
+            [index]="$index" 
+            [class.is-first]="$first"
+            [class.is-last]="$last"
+            [class.is-even]="$even"
+            [class.is-odd]="$odd"
+            (clickCourse)="handleClick($event)"
+        ></course-card>
+    }
 
-    </div>
+    @empty {
+        <h1>No courses listed</h1>
+    }
 
 </div>
 

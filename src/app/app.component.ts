@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {COURSES} from '../db-data';
+import { Course } from './model/course';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,15 @@ import {COURSES} from '../db-data';
     standalone: false
 })
 export class AppComponent {
+    public courses: Course[] = COURSES;
 
+    public date: Date = new Date();
 
+    public title: string = "Some tTittle";
 
+    public price: number = 83.382324
+
+    handleClick(course: Course) {
+        console.log("Hello clicked here", course)
+    }
 }
