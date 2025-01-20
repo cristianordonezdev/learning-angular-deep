@@ -10,6 +10,13 @@ import { Course } from './model/course';
 })
 export class AppComponent {
     public courses: Course[] = COURSES;
+
+    public date: Date = new Date();
+
+    public title: string = "Some tTittle";
+
+    public price: number = 83.382324
+
     handleClick(course: Course) {
         console.log("Hello clicked here", course)
     }

@@ -3,8 +3,12 @@
     <div class="course-title">
       {{index}} {{course.description}}
     </div>
-    <img width="300" alt="Angular Logo"
-         [src]="course.iconUrl">
+    @if (course.iconUrl) {
+        <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+    }
+    @else {
+        <h5>No found image</h5>
+    }
 
     <div class="course-description">
         {{ course.longDescription}}
