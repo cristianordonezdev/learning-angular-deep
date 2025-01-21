@@ -4,16 +4,15 @@
       {{index}} {{course.description}}
     </div>
     @if (course.iconUrl) {
-        <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+        <ng-content select="image-slot"></ng-content>
     }
     @else {
         <h5>No found image</h5>
     }
 
-    <div class="course-description">
-        {{ course.longDescription}}
-    </div>
-
+    <!--Container slots by default  -->
+    <ng-content></ng-content>
+    <ng-content select="description-slot"></ng-content>
     <button (click)="handleClick()">View course</button>
 
 </div>

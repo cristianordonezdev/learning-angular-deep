@@ -1,8 +1,14 @@
 <div class="top-menu">
-
+    
     <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
+
+<button (click)="addListItem()">Add an item in list</button>
+
+<h1>Getting DOM elements through references to</h1>
+
+<course-card [course]="courses[0]" (clickCourse)="handleClickReference($event)" #card1></course-card>
 
 
 <div class="courses">
@@ -19,7 +25,7 @@
 
     {{courses | json}}
     <!-- A new way of implementing a foor loop -->
-    @for (item of courses | slice:0:5; 
+    @for (item of courses; 
         track item.id; 
     ) {
         {{counter}}
@@ -31,7 +37,21 @@
             [class.is-even]="$even"
             [class.is-odd]="$odd"
             (clickCourse)="handleClick($event)"
-        ></course-card>
+        >
+        <div class="image-slot">
+            <image-course [iconUrl]="item.iconUrl" ></image-course>
+        </div>
+        
+        <div class="container-slots">
+            Container slots
+        </div>
+
+        <div class="description-slot">
+            {{item.longDescription}}
+        </div>
+
+
+    </course-card>
     }
 
     @empty {
