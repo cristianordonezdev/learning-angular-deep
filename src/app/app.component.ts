@@ -30,4 +30,8 @@ export class AppComponent implements AfterViewInit {
 
     }
 
+    onToggle(highlighted: boolean) {
+        console.log("Card Highlighted", highlighted);
+    }
+
 }
